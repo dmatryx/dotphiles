@@ -8,7 +8,7 @@
 #
 
 # Location of your dotfiles in $HOME
-# DOTFILES=.dotfiles
+DOTFILES=.dotfiles
 
 # dotfiles to symlink
 #
@@ -20,6 +20,10 @@
 dotsyncrc
 #ack/ackrc
 #aptitude
+bash/dotbashrc:.bashrc
+bash/bash_aliases
+back/bash_functions
+bash/bash_path
 #bin:bin
 #ctags/ctags
 #cmus
@@ -63,9 +67,9 @@ dotsyncrc
 #task/taskrc
 #tmux/tmux.conf
 #tmux/tmuxinator
-#vim/dotvim:.vim
-#vim/vimrc
-#vim/gvimrc
+vim/dotvim:.vim
+vim/vimrc
+vim/gvimrc
 #wget/wgetrc
 #zsh/fasdrc
 #zsh/dotzsh:.zsh
