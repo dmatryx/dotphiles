@@ -59,6 +59,7 @@ git/git-sh-prompt:git-prompt.sh
 #ruby/rdebugrc
 #ruby/aprc
 #ruby/caprc
+scripts:scripts
 #screen/screenrc
 #shell/hushlogin
 #shell/urlview
@@ -68,9 +69,9 @@ git/git-sh-prompt:git-prompt.sh
 #task/taskrc
 #tmux/tmux.conf
 #tmux/tmuxinator
-vim/dotvim:.vim
-vim/vimrc
-vim/gvimrc
+#vim/dotvim:.vim
+#vim/vimrc
+#vim/gvimrc
 #wget/wgetrc
 #zsh/fasdrc
 #zsh/dotzsh:.zsh
