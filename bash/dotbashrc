@@ -127,6 +127,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Completion for U and Kubectl
+eval "$(u --completion-script-bash)"
+source <(kubectl completion bash)
+
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     . /usr/lib/git-core/git-sh-prompt
 fi
