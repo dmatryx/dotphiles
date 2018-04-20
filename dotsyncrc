@@ -22,8 +22,8 @@ dotsyncrc
 #aptitude
 bash/dotbashrc:.bashrc
 bash/bash_aliases
-back/bash_functions
-bash/bash_path
+bash/bash_env
+bash/bash_functions
 #bin:bin
 #ctags/ctags
 #cmus
@@ -80,9 +80,11 @@ vim/gvimrc
 #zsh/zshrc
 [endfiles]
 
+
 # Hosts to sync
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
+greg-thinkpad                    git=NONE
 #host1.example.com               git=ANY                        files=custom/dotfile    #git repo, pull from anywhere and link a custom dotfile
 #host2.example.com               git=ANY                                                #git repo, pull from anywhere
 #host3.example.com               git=ANY                                                #git repo, pull from anywhere
