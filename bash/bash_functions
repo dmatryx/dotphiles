@@ -1,8 +1,0 @@
-function dotsync {
-  (
-    cd ~
-    ./.dotfiles/dotsync/bin/dotsync -L
-  )
-}
-
-export -f dotsync

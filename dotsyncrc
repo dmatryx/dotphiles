@@ -20,10 +20,10 @@ DOTFILES=.dotfiles
 dotsyncrc
 #ack/ackrc
 #aptitude
-bash/dotbashrc:.bashrc
-bash/bash_aliases
-bash/bash_env
-bash/bash_functions
+bash/dotbashrc.sh:.bashrc
+bash/bash_aliases.sh:.bash_aliases
+bash/bash_env.sh:.bash_env
+bash/bash_functions.sh:.bash_functions
 #bin:bin
 #ctags/ctags
 #cmus
