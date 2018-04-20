@@ -11,7 +11,7 @@ __set_bash_prompt()
 
   local None='\[\e[0m\]'
   local Green='\[\e[92m\]'
-  local BGreen='\[\e[1;92m\]'
+  local BRed='\[\e[1;31m\]'
   local Yellow='\[\e[93m\]'
   local Cyan='\[\e[96m\]'
 
@@ -25,7 +25,7 @@ __set_bash_prompt()
   PrePrompt+="${debian_chroot:+($debian_chroot)}["
   # User / Host (aware of root)
   if [[ ${EUID} == 0 ]]; then
-    PrePrompt+="$BGreen\h "
+    PrePrompt+="$BRed\h "
   else
     PrePrompt+="$Green\u@\h "
   fi
