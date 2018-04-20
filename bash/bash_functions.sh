@@ -10,11 +10,20 @@ export -f dotsync
 ## Display and utility functions go here
 function colourizePath {
   IFS='/';
-  pathParts=($1);
+  if [ $# -eq 1 ]; then
+    pathParts=($1)
+    maxNumber=5
+  else
+    maxNumber=($1)
+    pathParts=($2)
+  fi
   unset IFS;
   arrayCount=${#pathParts[@]}
   for i in "${!pathParts[@]}"; do
     colourToUse=$[${arrayCount}-${i}];
+    if [ $maxNumber -lt $colourToUse ]; then
+      colourToUse=$maxNumber
+    fi
     case ${colourToUse} in
       1)
         echo -en '\e[36m';
@@ -106,7 +115,7 @@ function gup {
 
   for REF in `git remote`
   do
-    echo -e "Fetching \e[33m${REF}\e[0m With Prune and Tags"
+    echo -e "Fetching \e[1;95m${REF}\e[0m"
     git fetch --prune --tags ${REF};
   done
 
@@ -167,3 +176,36 @@ function gup {
 }
 
 export -f gup
+
+function gupp(){
+  ROOT_DIR="${HOME}"
+  CODE_DIR="code"
+  echo "======================================================"
+  echo "Updating All Repositories under $(colourizePath "${ROOT_DIR}/${CODE_DIR}")"
+  echo "======================================================"
+  # Enumerate repos to run
+  local LOCATIONS=()
+  for ORG in `ls ${ROOT_DIR}/${CODE_DIR}`; do
+    for REPO in `ls ${ROOT_DIR}/${CODE_DIR}/${ORG}`; do
+      local LOC="${ROOT_DIR}/${CODE_DIR}/${ORG}/${REPO}"
+      if [ -d "${LOC}/.git" ]; then
+        LOCATIONS+=(${LOC})
+      fi
+    done
+  done
+
+  local repocount=${#LOCATIONS[@]}
+
+  for (( i=0; i<${repocount}; i++ ))
+  do
+    (
+      cd "${LOCATIONS[$i]}"
+      echo "Now processing [$[i + 1]/${repocount}] >> $(colourizePath 3 "${LOCATIONS[$i]}")"
+      gup all
+      echo -e ""
+    )
+  done
+  echo "Done"
+}
+
+export -f gupp
