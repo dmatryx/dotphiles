@@ -28,6 +28,7 @@ bash/bash_functions
 #ctags/ctags
 #cmus
 #curl/curlrc
+git/git-sh-prompt:git-prompt.sh
 #git/gitconfig
 #git/gitignore
 #git/gitattributes

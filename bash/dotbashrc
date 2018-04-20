@@ -130,3 +130,8 @@ fi
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     . /usr/lib/git-core/git-sh-prompt
 fi
+
+if [ -f ~/git-prompt.sh ]; then
+    . ~/git-prompt.sh
+fi
+
