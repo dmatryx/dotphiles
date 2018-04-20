@@ -7,15 +7,17 @@ export GIT_PS1_DESCRIBESTYLE="describe"
 
 __set_bash_prompt()
 {
+  local exit="$?"
+
   export GIT_PS1_SHOWCOLORHINTS=0
 
   local None='\[\e[0m\]'
   local Green='\[\e[92m\]'
   local BRed='\[\e[1;31m\]'
+  local Red='\[\e[31m\]'
   local Yellow='\[\e[93m\]'
   local Cyan='\[\e[96m\]'
 
-  local exit="$?"
   # Start with the window title in pre-prompt.
   local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u@\h    ${PWD//[^[:ascii:]]/?}    `__git_ps1`\007\]'
   local PostPrompt=""
@@ -36,7 +38,7 @@ __set_bash_prompt()
   PrePrompt+="$None] "
 
   if [[ $exit != 0 ]]; then
-    PostPrompt="$Red[$exit]"
+    PostPrompt="$Red[$exit]$None"
   fi
 
   PostPrompt+='\n$ '
@@ -46,4 +48,4 @@ __set_bash_prompt()
 #  export PS1='\[\033]0;\u@\h    ${PWD//[^[:ascii:]]/?}    `__git_ps1`\007\][\[\033[92m\]\u@\h \[\033[93m\]\W\[\033[0m\]]\[\033[96m\]`__git_ps1`\[\033[0m\]\n$ '
 }
 
-PROMPT_COMMAND="history -a;__set_bash_prompt"
+PROMPT_COMMAND="__set_bash_prompt;history -a"

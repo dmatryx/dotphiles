@@ -135,8 +135,20 @@ if [ -f ~/git-prompt.sh ]; then
     . ~/git-prompt.sh
 fi
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent -s`
-fi
+# if [ -z "$SSH_AUTH_SOCK" ] ; then
+#   eval `ssh-agent -s`
+#   ssh-add /home/greg/.ssh/greg.rsa
+# fi
 
-ssh-add /home/greg/.ssh/greg.rsa
+add_all_keys() {
+  for file in `ls .ssh/*.rsa`
+  do
+    ssh-add $file
+  done
+}
+
+ssh-add -l >/dev/null 2>&1
+
+if [ $? == 1 ]; then
+  add_all_keys
+fi
