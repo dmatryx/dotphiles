@@ -135,3 +135,8 @@ if [ -f ~/git-prompt.sh ]; then
     . ~/git-prompt.sh
 fi
 
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+fi
+
+ssh-add /home/greg/.ssh/greg.rsa
