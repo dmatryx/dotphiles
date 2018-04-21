@@ -1,3 +1,7 @@
+################################################################################
+## Display and utility functions go here
+################################################################################
+# Shorthand to sync dotfiles over, regardless of where it is run from.
 function dotsync {
   (
     cd ~
@@ -7,8 +11,27 @@ function dotsync {
 
 export -f dotsync
 
-## Display and utility functions go here
+# colourizePath: [-maxDepth=5] [-forceColour=n] Pathspec
+#
+# Function to take a pathspec and pretty it up.
+# At it's simplest, it just (R-L) colourises depth
+# maxDepth will let you stop processing past n levels and leave the rest at the
+# colour of the max depth level.
+# forceColour will set everything to one colour. Useful for common pre-paths.
+# forceColour can take a number or a locally declared variable.
 function colourizePath {
+
+  local C_CYA='\e[36m'
+  local C_GRE='\e[32m'
+  local C_YEL='\e[93m'
+  local C_ORA='\e[91m'
+  local C_RED='\e[31m'
+  local C_BRO='\e[33m'
+
+  local C_RST='\e[0m'
+
+  local SEP=${C_BRO}/${C_RST}
+
   IFS='/';
   if [ $# -eq 1 ]; then
     pathParts=($1)
@@ -26,47 +49,37 @@ function colourizePath {
     fi
     case ${colourToUse} in
       1)
-        echo -en '\e[36m';
-        echo -n ${pathParts[$i]};
-        echo -en '\e[0m';
+        echo -en ${C_CYA}
         ;;
       2)
-        echo -en '\e[32m';
-        echo -n ${pathParts[$i]};
-        echo -en '\e[0m';
-        echo -en '\e[33m';
-        echo -n /
-        echo -en '\e[0m';
+        echo -en ${C_GRE}
         ;;
       3)
-        echo -en '\e[93m';
-        echo -n ${pathParts[$i]};
-        echo -en '\e[0m';
-        echo -en '\e[33m';
-        echo -n /
-        echo -en '\e[0m';
+        echo -en ${C_YEL}
         ;;
       4)
-        echo -en '\e[91m';
-        echo -n ${pathParts[$i]};
-        echo -en '\e[0m';
-        echo -en '\e[33m';
-        echo -n /
-        echo -en '\e[0m';
+        echo -en ${C_ORA}
         ;;
       *)
-        echo -en '\e[31m';
-        echo -n ${pathParts[$i]};
-        echo -en '\e[0m';
-        echo -en '\e[33m';
-        echo -n /
-        echo -en '\e[0m';
+        echo -en ${C_RED}
         ;;
     esac
+    echo -n ${pathParts[$i]}
+    echo -en ${C_RST}
+    local POS=$((${arrayCount} - ${i}))
+    if [ ${POS} -gt 1 ]; then
+      echo -en ${SEP}
+    fi
   done
 }
 
 export -f colourizePath
+
+
+
+################################################################################
+## Git related functions
+################################################################################
 
 # This function is a safe fast-forward update for git. Regardless of whether this is your current branch or not.
 # It takes two params - the first of which is the local reference to update, the second of which is the pre-detected upstream branch
@@ -177,21 +190,28 @@ function gup {
 
 export -f gup
 
+# This is like a mega-version of gup above.
+# Set the root directory where all of your code is located and let it go to town.
+# Expects a structure optionally 2 levels deep because of current work environment.
 function gupp(){
-  ROOT_DIR="${HOME}"
-  CODE_DIR="code"
+  CODE_DIR="${HOME}/code"
   echo "======================================================"
-  echo "Updating All Repositories under $(colourizePath "${ROOT_DIR}/${CODE_DIR}")"
+  echo "Updating All Repositories under $(colourizePath "${CODE_DIR}")"
   echo "======================================================"
   # Enumerate repos to run
   local LOCATIONS=()
-  for ORG in `ls ${ROOT_DIR}/${CODE_DIR}`; do
-    for REPO in `ls ${ROOT_DIR}/${CODE_DIR}/${ORG}`; do
-      local LOC="${ROOT_DIR}/${CODE_DIR}/${ORG}/${REPO}"
-      if [ -d "${LOC}/.git" ]; then
-        LOCATIONS+=(${LOC})
-      fi
-    done
+  for ORG in `ls ${CODE_DIR}`; do
+    local LOC="${CODE_DIR}/${ORG}"
+    if [ -d "${LOC}/.git" ]; then
+      LOCATIONS+=(${LOC})
+    else
+      for REPO in `ls ${CODE_DIR}/${ORG}`; do
+        local LOC="${CODE_DIR}/${ORG}/${REPO}"
+        if [ -d "${LOC}/.git" ]; then
+          LOCATIONS+=(${LOC})
+        fi
+      done
+    fi
   done
 
   local repocount=${#LOCATIONS[@]}
