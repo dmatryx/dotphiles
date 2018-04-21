@@ -71,8 +71,11 @@ function colourizePath {
 
   local SEP=${C_BRO}/${C_RST}
 
+  pathspec=$1
+
+  [[ "$pathspec" =~ ^"$HOME"(/|$) ]] && pathspec="~${pathspec#$HOME}"
   IFS='/';
-  pathParts=($1)
+  pathParts=($pathspec)
   unset IFS;
   arrayCount=${#pathParts[@]}
   for i in "${!pathParts[@]}"; do
@@ -241,7 +244,7 @@ export -f gup
 function gupp(){
   CODE_DIR="${HOME}/code"
   echo "======================================================"
-  echo "Updating All Repositories under $(colourizePath "${CODE_DIR}")"
+  echo "Updating All Repositories under $(colourizePath -f C_YEL "${CODE_DIR}")"
   echo "======================================================"
   # Enumerate repos to run
   local LOCATIONS=()
@@ -265,7 +268,7 @@ function gupp(){
   do
     (
       cd "${LOCATIONS[$i]}"
-      echo "Now processing [$[i + 1]/${repocount}] >> $(colourizePath -l 3:3 "${LOCATIONS[$i]}")"
+      echo "Now processing [$[i + 1]/${repocount}] >> $(colourizePath -l 2:3 "${LOCATIONS[$i]}")"
       gup all
       echo -e ""
     )
