@@ -11,15 +11,54 @@ function dotsync {
 
 export -f dotsync
 
-# colourizePath: [-maxDepth=5] [-forceColour=n] Pathspec
+# colourizePath: [-d n] [-f n] Pathspec
 #
 # Function to take a pathspec and pretty it up.
 # At it's simplest, it just (R-L) colourises depth
-# maxDepth will let you stop processing past n levels and leave the rest at the
-# colour of the max depth level.
-# forceColour will set everything to one colour. Useful for common pre-paths.
-# forceColour can take a number or a locally declared variable.
+# -d n
+#   maxDepth will let you stop processing past n levels and leave the rest at
+#   the colour of the max depth level.
+# -f n
+#   forceColour will set everything to one colour. Useful for common pre-paths.
+#   forceColour can take a number or a locally declared variable.
+# -l n:m
+#   lock the left n entries and make them colour m
 function colourizePath {
+
+  local OPTIND
+  local maxNumber=5
+  local forceColour=0
+  local shifter=0
+  local leftLock=0
+  local leftColour=0
+
+  while getopts "d:f:l:" OPTLOOP; do
+    case ${OPTLOOP} in
+      d)
+        maxNumber="${OPTARG}"
+        (( shifter++ ))
+        (( shifter++ ))
+        ;;
+      f)
+        forceColour="${OPTARG}"
+        (( shifter++ ))
+        (( shifter++ ))
+        ;;
+      l)
+        presplit="${OPTARG}"
+        IFS=':'
+        subopts=($presplit)
+        unset IFS;
+        leftLock=${subopts[0]}
+        leftColour=${subopts[1]}
+        (( shifter++ ))
+        (( shifter++ ))
+        ;;
+      *)
+        ;;
+    esac
+  done
+  shift $shifter
 
   local C_CYA='\e[36m'
   local C_GRE='\e[32m'
@@ -33,37 +72,43 @@ function colourizePath {
   local SEP=${C_BRO}/${C_RST}
 
   IFS='/';
-  if [ $# -eq 1 ]; then
-    pathParts=($1)
-    maxNumber=5
-  else
-    maxNumber=($1)
-    pathParts=($2)
-  fi
+  pathParts=($1)
   unset IFS;
   arrayCount=${#pathParts[@]}
   for i in "${!pathParts[@]}"; do
     colourToUse=$[${arrayCount}-${i}];
+    if [ $leftLock -gt 0 ]; then
+      if [ $i -lt $leftLock  ]; then
+        colourToUse=$leftColour
+      fi
+    fi
     if [ $maxNumber -lt $colourToUse ]; then
       colourToUse=$maxNumber
     fi
-    case ${colourToUse} in
-      1)
-        echo -en ${C_CYA}
-        ;;
-      2)
-        echo -en ${C_GRE}
-        ;;
-      3)
-        echo -en ${C_YEL}
-        ;;
-      4)
-        echo -en ${C_ORA}
-        ;;
-      *)
-        echo -en ${C_RED}
-        ;;
-    esac
+    if [ $forceColour != 0 ]; then
+      colourToUse=$forceColour
+    fi
+    if [[ $colourToUse =~ ^[1-5]$ ]]; then
+      case ${colourToUse} in
+        1)
+          echo -en ${C_CYA}
+          ;;
+        2)
+          echo -en ${C_GRE}
+          ;;
+        3)
+          echo -en ${C_YEL}
+          ;;
+        4)
+          echo -en ${C_ORA}
+          ;;
+        *)
+          echo -en ${C_RED}
+          ;;
+      esac
+    else
+      echo -en "${!colourToUse}"
+    fi
     echo -n ${pathParts[$i]}
     echo -en ${C_RST}
     local POS=$((${arrayCount} - ${i}))
@@ -220,7 +265,7 @@ function gupp(){
   do
     (
       cd "${LOCATIONS[$i]}"
-      echo "Now processing [$[i + 1]/${repocount}] >> $(colourizePath 3 "${LOCATIONS[$i]}")"
+      echo "Now processing [$[i + 1]/${repocount}] >> $(colourizePath -l 3:3 "${LOCATIONS[$i]}")"
       gup all
       echo -e ""
     )
