@@ -139,6 +139,9 @@ if [ -f ~/git-prompt.sh ]; then
     . ~/git-prompt.sh
 fi
 
+# Detail the system uptime.
+uptime -p | sed -e "s/up/Up for/"
+
 # if [ -z "$SSH_AUTH_SOCK" ] ; then
 #   eval `ssh-agent -s`
 #   ssh-add /home/greg/.ssh/greg.rsa

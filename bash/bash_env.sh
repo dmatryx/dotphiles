@@ -53,3 +53,6 @@ PROMPT_COMMAND="__set_bash_prompt;history -a"
 PATH="$HOME/scripts:$PATH"
 
 export GOPATH=`go env GOPATH`
+
+# Nice manpages. Most is to less as less is to more.
+export MANPAGER='most'
