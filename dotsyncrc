@@ -29,7 +29,7 @@ bash/bash_functions.sh:.bash_functions
 #cmus
 #curl/curlrc
 git/git-sh-prompt:git-prompt.sh
-#git/gitconfig
+git/gitconfig
 #git/gitignore
 #git/gitattributes
 #git/tigrc
