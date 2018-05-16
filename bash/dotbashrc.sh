@@ -12,6 +12,9 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# Don't log all the exit commands I use from having 20 million terminals open
+HISTIGNORE='exit:history'
+
 # append to the history file, don't overwrite it
 # Make the prompt run the append every time
 shopt -s histappend
