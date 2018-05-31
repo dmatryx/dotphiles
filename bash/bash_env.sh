@@ -51,6 +51,7 @@ __set_bash_prompt()
 PROMPT_COMMAND="__set_bash_prompt;history -a"
 
 export GOPATH=`go env GOPATH`
+export MARKPATH="$HOME/.marks"
 
 PATH="$HOME/scripts:$GOPATH/bin:$PATH"
 

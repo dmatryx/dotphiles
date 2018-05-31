@@ -9,7 +9,7 @@ function dotsync {
   )
 }
 
-export -f dotsync
+#export -f dotsync
 
 # colourizePath: [-d n] [-f n] Pathspec
 #
@@ -121,7 +121,7 @@ function colourizePath {
   done
 }
 
-export -f colourizePath
+# export -f colourizePath
 
 
 
@@ -167,7 +167,7 @@ function gitSafeFF {
   fi
 }
 
-export -f gitSafeFF
+# export -f gitSafeFF
 
 # This function will either selectively update, or batch update refspecs it can locate.
 # Where possible it will fastforward, but it will update in all cases the status of the branch.
@@ -236,7 +236,7 @@ function gup {
   fi
 }
 
-export -f gup
+# export -f gup
 
 # This is like a mega-version of gup above.
 # Set the root directory where all of your code is located and let it go to town.
@@ -276,4 +276,42 @@ function gupp(){
   echo "Done"
 }
 
-export -f gupp
+# export -f gupp
+
+# Marks a folder by creating a symlink inside a predefined area to it.
+function mark(){
+  if [[ $1 = 'back' ]]; then
+    echo "'back' has a special meaning to jump, and cannot be used as a mark.";
+  else
+    mkdir -p "$MARKPATH";
+    ln -s "$(pwd)" "$MARKPATH/$1";
+  fi
+}
+
+# Jumps to a mark defined from the mark function.
+function jump(){
+  if [[ $1 = 'back' ]]; then
+    cd -P "$OLDPWD" 2> /dev/null;
+  else
+    cd -P "$MARKPATH/$1" 2> /dev/null || echo "No such mark: $1";
+  fi
+}
+
+# Removes a mark set up above.
+function unmark(){
+  rm -i "$MARKPATH/$1"
+}
+
+# Enumerates all currently set marks.
+function marks(){
+  if [ ! -d $MARKPATH ]; then mkdir -p $MARKPATH; fi
+  ls -l $MARKPATH | awk '{print $9, $10, $11}' | column -t
+}
+
+# Completion function for jump/unmark
+function _completemarks() {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(find $MARKPATH -type l -exec basename {} \;)
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
+}

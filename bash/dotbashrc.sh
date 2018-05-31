@@ -142,6 +142,9 @@ if [ -f ~/git-prompt.sh ]; then
     . ~/git-prompt.sh
 fi
 
+# Completion for jump and unmark
+complete -F _completemarks jump unmark
+
 # Detail the system uptime.
 uptime -p | sed -e "s/up/Up for/"
 
