@@ -1,3 +1,7 @@
+################################################################################
+## Environment specific things.
+################################################################################
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDSTATE=1

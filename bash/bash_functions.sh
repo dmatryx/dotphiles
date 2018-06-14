@@ -1,6 +1,7 @@
 ################################################################################
 ## Display and utility functions go here
 ################################################################################
+
 # Shorthand to sync dotfiles over, regardless of where it is run from.
 function dotsync {
   (

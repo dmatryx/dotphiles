@@ -118,32 +118,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+if [ -f ~/.bash_completions ]; then
+    . ~/.bash_completions
 fi
-
-# Completion for U and Kubectl
-eval "$(u --completion-script-bash)"
-source <(kubectl completion bash)
-
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
-    . /usr/lib/git-core/git-sh-prompt
-fi
-
-if [ -f ~/git-prompt.sh ]; then
-    . ~/git-prompt.sh
-fi
-
-# Completion for jump and unmark
-complete -F _completemarks jump unmark
 
 # Detail the system uptime.
 uptime -p | sed -e "s/up/Up for/"
