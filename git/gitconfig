@@ -4,7 +4,7 @@
     email = greg.sweetman@zpg.co.uk
 
 [core]
-    editor = vim
+	editor = subl -n -w --command toggle_full_screen /home/greg/.dotfiles/.git/COMMIT_EDITMSG:2
 
 [color "decorate"]
     head = bold red
@@ -27,3 +27,5 @@
 #[url "git@github.com:"]
 #    insteadof = github:
 
+[commit]
+	template = ~/.dotfiles/git/commit-msg-template
