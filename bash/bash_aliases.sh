@@ -9,6 +9,7 @@ alias vi='vim'
 alias jqp="jq '.'"
 
 # Load sublime with this current folder, in a new window.
+alias subl='subl --project ~/.dotfiles/sublime/default.sublime-project'
 alias sublh='subl -n .'
 
 # Do updates and upgrades for installed packages.

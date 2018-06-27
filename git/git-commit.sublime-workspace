@@ -1,0 +1,353 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"U",
+				"URL"
+			],
+			[
+				"colour",
+				"colourToUse"
+			]
+		]
+	},
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					""
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Documentation"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Clean"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Run"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Test"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Re-test"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Uberjar"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Jar"
+				],
+				[
+					"Packages/Enhanced Clojure/Leiningen.sublime-build",
+					"Lein: Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Enhanced Clojure/Leiningen.sublime-build",
+				"Lein: Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"repl",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"cloj",
+				"Set Syntax: Clojure"
+			],
+			[
+				"re",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"rep",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"previ",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa inst",
+				"Package Control: Install Package"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"markdown pre",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"diff",
+				"Git: Diff All Files"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"remove pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				"filed",
+				"FileDiffs: Menu"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"gitdiff",
+				"Git: Diff Current File"
+			],
+			[
+				"makrdown pre",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"git dif",
+				"Git: Diff All Files"
+			]
+		],
+		"width": 569.0
+	},
+	"console":
+	{
+		"height": 206.0,
+		"history":
+		[
+			"window.run_command('resize_window',{'width': 1600, 'height': 900})",
+			"sublime.log_input(False)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/generic_latest_sales.sql.erb",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/generic_etl_clicks.sql.erb",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/generated/minimal_latest_sales.sql",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/beetle_latest.yaml",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/beetle_etl.yaml",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/.gitignore",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/beetle_latest_segment.yaml.erb",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/.ruby-version",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/generated/.gitignore",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/ldn_etl_clicks.sql",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/ldn_etl_sales_log.sql",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/ldn_latest_sales.sql",
+		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/test_latest_sales.sql",
+		"/home/greg/.config/sublime-text-3/Packages/User/SpaceCadet2 (SL).tmTheme",
+		"/home/greg/.config/sublime-text-3/Packages/User/Markdown.sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/MarkdownEditing/Markdown.sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/User/Markdown (Standard).sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/User/MarkdownPreview.sublime-settings",
+		"/home/greg/code/money/website/public_html/php/jumpsite.php",
+		"/home/greg/code/zpg/ldn-tracker/workers/clicks.go",
+		"/home/greg/code/zpg/ldn-tracker/workers/worker.go",
+		"/home/greg/code/zpg/ldn-tracker/client/client.go",
+		"/home/greg/code/zpg/onboarding/LDN.md",
+		"/home/greg/.config/sublime-text-3/Packages/User/Git.sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/MarkdownEditing/Default (Linux).sublime-keymap",
+		"/home/greg/.config/sublime-text-3/Packages/MarkdownEditing/MultiMarkdown.sublime-settings",
+		"/home/greg/.config/user-dirs.dirs",
+		"/home/greg/.dotfiles/bash/bash_functions.sh",
+		"/home/greg/.dotfiles/dotsyncrc",
+		"/home/greg/.dotfiles/bash/bash_aliases.sh",
+		"/home/greg/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/home/greg/.config/sublime-text-3/Packages/User/Side Bar.sublime-settings",
+		"/home/greg/.dotfiles/vim/vimrc",
+		"/home/greg/.dotfiles/vim/gvimrc",
+		"/home/greg/.dotfiles/bash/bash_aliases",
+		"/home/greg/.config/sublime-text-3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/home/greg/.bashrc",
+		"/home/greg/.config/sublime-text-3/Packages/User/TodoReview.sublime-settings",
+		"/?"
+	],
+	"find":
+	{
+		"height": 46.0
+	},
+	"find_in_files":
+	{
+		"height": 122.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 46.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 162.0
+	},
+	"output.exec":
+	{
+		"height": 168.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 162.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 253.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
