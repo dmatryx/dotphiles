@@ -4,7 +4,7 @@
     email = greg.sweetman@zpg.co.uk
 
 [core]
-	editor = subl -n -w --project ~/.dotfiles/git/git-commit.sublime-project ~/.dotfiles/.git/COMMIT_EDITMSG:2
+	editor = subl -n -w --project ~/.sublime/git-commit.sublime-project ~/.dotfiles/.git/COMMIT_EDITMSG:2
 
 [color "decorate"]
     head = bold red

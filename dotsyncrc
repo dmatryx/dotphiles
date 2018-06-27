@@ -66,6 +66,7 @@ scripts:scripts
 #shell/urlview
 #ssh
 #subversion
+sublime
 #task/task
 #task/taskrc
 #tmux/tmux.conf
