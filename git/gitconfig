@@ -29,3 +29,5 @@
 
 [commit]
 	template = ~/.dotfiles/git/commit-msg-template
+[protocol]
+	version = 2
