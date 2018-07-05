@@ -178,6 +178,9 @@
 	},
 	"file_history":
 	[
+		"/home/greg/code/zpg/ldn-import-sales/",
+		"/home/greg/code/zpg/ldn-import-sales/.git/COMMIT_EDITMSG",
+		"/home/greg/.dotfiles/.git/COMMIT_EDITMSG",
 		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/generic_latest_sales.sql.erb",
 		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/generic_etl_clicks.sql.erb",
 		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/generated/minimal_latest_sales.sql",

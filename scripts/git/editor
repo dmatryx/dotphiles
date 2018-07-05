@@ -1,0 +1,2 @@
+#!/bin/bash
+subl -n -w --project ~/.sublime/git-commit.sublime-project $(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG:2
