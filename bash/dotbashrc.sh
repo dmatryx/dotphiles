@@ -130,15 +130,18 @@ uptime -p | sed -e "s/up/Up for/"
 #   ssh-add /home/greg/.ssh/greg.rsa
 # fi
 
-add_all_keys() {
-  for file in `ls .ssh/*.rsa`
-  do
-    ssh-add $file
-  done
-}
+# add_all_keys() {
+#   for file in `ls .ssh/*.rsa`
+#   do
+#     ssh-add $file
+#   done
+# }
 
-ssh-add -l >/dev/null 2>&1
+# ssh-add -l >/dev/null 2>&1
 
-if [ $? == 1 ]; then
-  add_all_keys
-fi
+# if [ $? == 1 ]; then
+#   add_all_keys
+# fi
+
+# Added by Krypton
+export GPG_TTY=$(tty)

@@ -29,5 +29,10 @@
 
 [commit]
 	template = ~/.dotfiles/git/commit-msg-template
+	gpgSign = true
 [protocol]
 	version = 2
+[gpg]
+	program = /usr/bin/krgpg
+[tag]
+	forceSignAnnotated = true
