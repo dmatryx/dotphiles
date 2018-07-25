@@ -21,8 +21,8 @@ shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -125,23 +125,23 @@ fi
 # Detail the system uptime.
 uptime -p | sed -e "s/up/Up for/"
 
-# if [ -z "$SSH_AUTH_SOCK" ] ; then
-#   eval `ssh-agent -s`
-#   ssh-add /home/greg/.ssh/greg.rsa
-# fi
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add /home/greg/.ssh/greg.rsa
+fi
 
-# add_all_keys() {
-#   for file in `ls .ssh/*.rsa`
-#   do
-#     ssh-add $file
-#   done
-# }
+add_all_keys() {
+  for file in `ls .ssh/*.rsa`
+  do
+    ssh-add $file
+  done
+}
 
-# ssh-add -l >/dev/null 2>&1
+ssh-add -l >/dev/null 2>&1
 
-# if [ $? == 1 ]; then
-#   add_all_keys
-# fi
+if [ $? == 1 ]; then
+  add_all_keys
+fi
 
 # Added by Krypton
 export GPG_TTY=$(tty)

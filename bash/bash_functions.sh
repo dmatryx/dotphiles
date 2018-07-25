@@ -316,3 +316,8 @@ function _completemarks() {
   COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
+
+# Function to switch kubernetes namespace.
+function n(){
+  kubectl config set-context black.kube.usw.co --namespace=$1
+}
