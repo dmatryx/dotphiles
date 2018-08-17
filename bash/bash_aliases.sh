@@ -29,3 +29,5 @@ alias gs='git status'
 alias ga='git add'
 alias gr='git rm'
 alias gc='git commit'
+
+alias screen='screen -q'

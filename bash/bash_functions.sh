@@ -319,5 +319,30 @@ function _completemarks() {
 
 # Function to switch kubernetes namespace.
 function n(){
-  kubectl config set-context black.kube.usw.co --namespace=$1
+  kubectl config set-context $(kubectl config current-context) --namespace=$1
+}
+
+function kbash(){
+  kubectl exec $1 -it -- bash
+}
+
+function lein-(){
+  echo "Compiling..."
+  lein compile
+  echo "Checking user plugins..."
+  lein ancient check-profiles
+  echo "Doing things... (editor will open upon completion with outputs)"
+  echo "Ancient:"
+  lein ancient :no-colours &> /tmp/ancient.txt
+  echo "Bikeshed:"
+  lein bikeshed -v -m 80 &> /tmp/bikeshed.md
+  sed -i -r 's|^#''|  * #''|' /tmp/bikeshed.md
+  sed -i 's/Checking/# Checking/' /tmp/bikeshed.md
+  sed -i -r 's|(/home/[^:]+:[0-9]+:)|`\1`\n|' /tmp/bikeshed.md
+  echo "Kibit:"
+  lein kibit --reporter markdown &> /tmp/kibit.md
+#  echo "Repetition-hunter:"
+#  lein repetition-hunter &> /tmp/hunter.txt
+  subl -n /tmp/ancient.txt /tmp/bikeshed.md /tmp/kibit.md  --command toggle_full_screen
+  #/tmp/hunter.txt
 }
