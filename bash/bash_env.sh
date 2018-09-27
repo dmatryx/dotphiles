@@ -65,3 +65,6 @@ PATH="$HOME/scripts:$GOPATH/bin:$PATH"
 
 # Nice manpages. Most is to less as less is to more.
 export MANPAGER='most'
+
+# Necessary for a lot of google libraries
+export GOOGLE_DEFAULT_CREDENTIALS=application_default_credentials.json
