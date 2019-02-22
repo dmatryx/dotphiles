@@ -23,7 +23,7 @@ __set_bash_prompt()
   local Cyan='\[\e[96m\]'
 
   # Start with the window title in pre-prompt.
-  local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u@\h    ${PWD//[^[:ascii:]]/?}    `__git_ps1`\007\]'
+  local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "greg-thinkpad" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
   local PostPrompt=""
 
   # Prompt construction
@@ -67,4 +67,4 @@ PATH="$HOME/scripts:$GOPATH/bin:$PATH"
 export MANPAGER='most'
 
 # Necessary for a lot of google libraries
-export GOOGLE_DEFAULT_CREDENTIALS=application_default_credentials.json
+export GOOGLE_APPLICATION_CREDENTIALS=application_default_credentials.json

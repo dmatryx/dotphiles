@@ -31,3 +31,6 @@ alias gr='git rm'
 alias gc='git commit'
 
 alias screen='screen -q'
+
+alias zipkin='docker run -t -i -p 9411:9411 openzipkin/zipkin'
+alias prometheus='docker run -t -i -p 9092:9092 prom/pushgateway:v0.5.2'

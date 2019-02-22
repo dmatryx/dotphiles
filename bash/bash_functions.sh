@@ -322,10 +322,12 @@ function n(){
   kubectl config set-context $(kubectl config current-context) --namespace=$1
 }
 
+# Function to try and bash into a kube pod.
 function kbash(){
   kubectl exec $1 -it -- bash
 }
 
+# Function to run some useful lein things and open the output in sublime.
 function lein-(){
   echo "Compiling..."
   lein compile
@@ -345,4 +347,14 @@ function lein-(){
 #  lein repetition-hunter &> /tmp/hunter.txt
   subl -n /tmp/ancient.txt /tmp/bikeshed.md /tmp/kibit.md  --command toggle_full_screen
   #/tmp/hunter.txt
+}
+
+# Function to run some common deploy steps in sequence.
+function lein+(){
+  echo "Compiling..."
+  lein compile
+  echo "Uberjarring"
+  lein uberjar
+  echo "Testing"
+  lein test
 }

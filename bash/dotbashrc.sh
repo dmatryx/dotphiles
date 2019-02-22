@@ -145,3 +145,9 @@ fi
 
 # Added by Krypton
 export GPG_TTY=$(tty)
+
+# AWS Localdev stuff
+export LocalDev=greg
+export RepoDir=/home/greg/code/money/website
+export LocalUser=$(id -u)
+export LocalGroup=$(id -g)
