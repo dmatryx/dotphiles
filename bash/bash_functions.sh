@@ -201,7 +201,38 @@ function gup {
         gitSafeFF ${REF} ${UPSTREAM}
       else
         # TODO:: Different error code handling?
-        echo -e "\033[90mIgnoring\033[0m : '$(colourizePath ${REF})' - No upstream configured for this branch."
+        POTENTIAL=$(git show-ref "origin/${REF}")
+        VALID=$?
+        if [[ ${VALID} -eq 0 ]]
+        then
+          echo -e "\033[93mWarning\033[0m  : '$(colourizePath ${REF})' - No upstream configured for this branch."
+          echo -e "\033[32mFound\033[0m    : '$(colourizePath origin/${REF})' - Testing branch compatibility."
+          git merge-base --is-ancestor ${REF} origin/${REF}
+          VALID=$?
+          if [[ ${VALID} -eq 0 ]]
+          then
+            git branch --set-upstream-to=origin/${REF} ${REF}
+            gitSafeFF ${REF} origin/${REF}
+          else
+            echo -e "\033[93mWarning\033[0m  : '$(colourizePath origin/${REF})' - Unrelated to current branch."
+          fi
+        else
+          git merge-base --is-ancestor ${REF} origin/master
+          VALID=$?
+          if [[ ${VALID} -eq 0 ]]
+          then
+            CURBRANCH="$(git symbolic-ref HEAD 2>/dev/null)" || CURBRANCH="(unnamed branch)"
+            if [[ "${CURBRANCH##refs/heads/}" == "${REF}" ]]
+            then
+              echo -e "\033[90mIgnoring\033[0m : '$(colourizePath ${REF})' - Currently checked out branch."
+            else
+              echo -e "\033[91mCleaning\033[0m : '$(colourizePath ${REF})' - Cleaning up fully merged branch."
+              git branch -D ${REF}
+            fi
+          else
+            echo -e "\033[90mIgnoring\033[0m : '$(colourizePath ${REF})' - No upstream configured for this branch."
+          fi
+        fi
       fi
     done
     return
@@ -312,7 +343,7 @@ function marks(){
 # Completion function for jump/unmark
 function _completemarks() {
   local curw=${COMP_WORDS[COMP_CWORD]}
-  local wordlist=$(find $MARKPATH -type l -exec basename {} \;)
+  local wordlist=$(find $MARKPATH -maxdepth 1 -type l,d -exec basename {} \;)
   COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
