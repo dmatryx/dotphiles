@@ -353,6 +353,11 @@ function n(){
   kubectl config set-context $(kubectl config current-context) --namespace=$1
 }
 
+# Function to switch kubernetes namespace.
+function kc(){
+  kubectl config use-context $1
+}
+
 # Function to try and bash into a kube pod.
 function kbash(){
   kubectl exec $1 -it -- bash

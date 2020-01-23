@@ -22,19 +22,39 @@ __set_bash_prompt()
   local Yellow='\[\e[93m\]'
   local Cyan='\[\e[96m\]'
 
+  local KubeBlue='\[\e[1;34m\]'
+  local KubeBlack='\[\e[1;30m\]'
+  local KubeRed='\[\e[1;31m\]'
+
   # Start with the window title in pre-prompt.
   local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "greg-thinkpad" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
   local PostPrompt=""
+
+  KubeNS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+  KubeCluster=$(kubectl config current-context)
 
   # Prompt construction
   # Debian Chroot display, plus a solitary [ to begin the line....
   PrePrompt+="${debian_chroot:+($debian_chroot)}["
   # User / Host (aware of root)
   if [[ ${EUID} == 0 ]]; then
-    PrePrompt+="$BRed\h "
-  else
-    PrePrompt+="$Green\u@\h "
+  #   PrePrompt+="$BRed\h "
+    PrePrompt+="$BRed\u|"
+  # else
+  #   PrePrompt+="$Green\u@\h "
   fi
+
+  # Kubernetes Bits
+  if [ "$KubeCluster" = "black" ] ; then
+    PrePrompt+="$KubeBlack"
+  elif [ "$KubeCluster" = "blue" ] ; then
+    PrePrompt+="$KubeBlue"
+  elif [ "$KubeCluster" = "red" ] ; then
+    PrePrompt+="$KubeRed"
+  fi
+  PrePrompt+="$KubeCluster"
+  PrePrompt+="$None $Green$KubeNS"
+  PrePrompt+="$None "
 
   # Working Directory
   PrePrompt+="$Yellow\W"
