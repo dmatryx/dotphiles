@@ -22,9 +22,8 @@ __set_bash_prompt()
   local Yellow='\[\e[93m\]'
   local Cyan='\[\e[96m\]'
 
-  local KubeBlue='\[\e[1;34m\]'
-  local KubeBlack='\[\e[1;30m\]'
-  local KubeRed='\[\e[1;31m\]'
+  local KubeEKS01='\[\e[1;34m\]'
+  local KubeEKS02='\[\e[1;31m\]'
 
   # Start with the window title in pre-prompt.
   local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "greg-thinkpad" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
@@ -45,12 +44,10 @@ __set_bash_prompt()
   fi
 
   # Kubernetes Bits
-  if [ "$KubeCluster" = "black" ] ; then
-    PrePrompt+="$KubeBlack"
-  elif [ "$KubeCluster" = "blue" ] ; then
-    PrePrompt+="$KubeBlue"
-  elif [ "$KubeCluster" = "red" ] ; then
-    PrePrompt+="$KubeRed"
+  if [ "$KubeCluster" = "eks-01" ] ; then
+    PrePrompt+="$KubeEKS01"
+  elif [ "$KubeCluster" = "eks-02" ] ; then
+    PrePrompt+="$KubeEKS02"
   fi
   PrePrompt+="$KubeCluster"
   PrePrompt+="$None $Green$KubeNS"

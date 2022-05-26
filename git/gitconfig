@@ -36,3 +36,5 @@
 	program = /usr/bin/krgpg
 [tag]
 	forceSignAnnotated = true
+[init]
+	defaultBranch = main

@@ -151,3 +151,5 @@ export LocalDev=greg
 export RepoDir=/home/greg/code/money/website
 export LocalUser=$(id -u)
 export LocalGroup=$(id -g)
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
