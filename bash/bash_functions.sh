@@ -10,6 +10,12 @@ function dotsync {
   )
 }
 
+function idea {
+  (
+    intellij-idea-ultimate "$@" &
+  ) > /dev/null 2>&1
+}
+
 #export -f dotsync
 
 # colourizePath: [-d n] [-f n] Pathspec
@@ -217,7 +223,7 @@ function gup {
             echo -e "\033[93mWarning\033[0m  : '$(colourizePath origin/${REF})' - Unrelated to current branch."
           fi
         else
-          git merge-base --is-ancestor ${REF} origin/master
+          git merge-base --is-ancestor ${REF} origin/main
           VALID=$?
           if [[ ${VALID} -eq 0 ]]
           then

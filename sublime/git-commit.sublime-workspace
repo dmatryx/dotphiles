@@ -178,11 +178,17 @@
 	},
 	"file_history":
 	[
+		"/home/greg/code/zpg/github-leads-admin/.git/COMMIT_EDITMSG",
+		"/home/greg/code/zpg/terraform-github/.git/COMMIT_EDITMSG",
+		"/home/greg/code/zpg/git-repo-admin-to-maint/.git/COMMIT_EDITMSG",
+		"/home/greg/code/zpg/rvu-platform-docs-spike/.git/COMMIT_EDITMSG",
+		"/home/greg/code/zpg/rvu-platform-docs-spike-product-1/.git/COMMIT_EDITMSG",
+		"/home/greg/code/zpg/cloud-kubernetes-extensions/.git/COMMIT_EDITMSG",
+		"/home/greg/.dotfiles/.git/COMMIT_EDITMSG",
 		"/home/greg/code/zpg/amp-bing-uploader/.git/COMMIT_EDITMSG",
 		"/home/greg/code/zpg/comms-dailies-api/.git/COMMIT_EDITMSG",
 		"/home/greg/code/zpg/ldn-import-sales/",
 		"/home/greg/code/zpg/ldn-import-sales/.git/COMMIT_EDITMSG",
-		"/home/greg/.dotfiles/.git/COMMIT_EDITMSG",
 		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/generic_latest_sales.sql.erb",
 		"/home/greg/code/zpg/ldn-etl-to-bigquery/templates/generic_etl_clicks.sql.erb",
 		"/home/greg/code/zpg/ldn-etl-to-bigquery/jobs/generated/minimal_latest_sales.sql",

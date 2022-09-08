@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
     name = Greg Sweetman
-    email = greg.sweetman@zpg.co.uk
+    email = krypton@matryx.org.uk
 
 [core]
 	editor = ~/scripts/git/editor
@@ -24,8 +24,8 @@
 
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold yellow)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''             %C(white)%s%C(reset)%n''             %C(bold magenta)%an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 
-#[url "git@github.com:"]
-#    insteadof = github:
+[url "ssh://git@github.com/"]
+    insteadof = https://github.com/
 
 [commit]
 	template = ~/.dotfiles/git/commit-msg-template
@@ -38,3 +38,5 @@
 	forceSignAnnotated = true
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true
