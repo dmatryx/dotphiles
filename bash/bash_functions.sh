@@ -356,12 +356,22 @@ function _completemarks() {
 
 # Function to switch kubernetes namespace.
 function n(){
+  # We're doing this twice.  Once to change the session based entry, then once to change the global - in case new terminal windows are opened
+  # The first command we're sending output to dev/null because both will say the same thing (hopefully).
+  kubectl config set-context $(kubectl config current-context) --namespace=$1 > /dev/null
+  KUBECONFIG_SAVED="${KUBECONFIG}"
+  KUBECONFIG=""
   kubectl config set-context $(kubectl config current-context) --namespace=$1
+  KUBECONFIG="${KUBECONFIG_SAVED}"
 }
 
-# Function to switch kubernetes namespace.
+# Function to switch kubernetes context (cluster).
 function kc(){
+  kubectl config use-context $1 > /dev/null
+  KUBECONFIG_SAVED="${KUBECONFIG}"
+  KUBECONFIG=""
   kubectl config use-context $1
+  KUBECONFIG="${KUBECONFIG_SAVED}"
 }
 
 # Function to try and bash into a kube pod.

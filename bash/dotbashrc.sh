@@ -152,4 +152,13 @@ export RepoDir=/home/greg/code/money/website
 export LocalUser=$(id -u)
 export LocalGroup=$(id -g)
 
+eval "$(rbenv init -)"
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+## Setting up session specific kubeconfig
+kcfile=/tmp/kubeconfig-$RANDOM.json
+kubectl config view --flatten --merge --output json > $kcfile
+export KUBECONFIG=$kcfile
+trap "rm -f $kcfile" EXIT
