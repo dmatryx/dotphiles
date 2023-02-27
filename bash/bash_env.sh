@@ -71,9 +71,7 @@ __set_bash_prompt()
 
 PROMPT_COMMAND="__set_bash_prompt;history -a"
 
-if [ -f /etc/profile.d/golang_path.sh ]; then
-    . /etc/profile.d/golang_path.sh
-fi
+export PATH=$PATH:/usr/local/go/bin ;# DOT NOT EDIT: installed by update-golang.sh
 
 export GOPATH=`go env GOPATH`
 export MARKPATH="$HOME/.marks"
