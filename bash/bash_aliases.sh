@@ -23,6 +23,7 @@ alias gogo='GOTO=$(pwd | sed "s:$HOME/code/zpg:$HOME/~~/go/src/github.com/uswitc
 # Kubectl
 alias k='kubectl'
 alias kl='kubectl logs'
+alias lns='kubectl get namespace -l prometheus=customer-platform'
 
 # Git
 alias gd='git diff'
@@ -33,7 +34,7 @@ alias ga='git add'
 alias gr='git rm'
 alias gc='git commit'
 
-alias screen='screen -q'
+#alias screen='screen -q'
 
 alias zipkin='docker run -t -i -p 9411:9411 openzipkin/zipkin'
 alias prometheus='docker run -t -i -p 9092:9092 prom/pushgateway:v0.5.2'
