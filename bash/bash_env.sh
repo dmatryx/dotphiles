@@ -26,7 +26,7 @@ __set_bash_prompt()
   local KubeEKS02='\[\e[1;31m\]'
 
   # Start with the window title in pre-prompt.
-  local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "greg-thinkpad" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
+  local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "greg-ThinkPad-X1-Carbon-Gen-10" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
   local PostPrompt=""
 
   KubeNS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
