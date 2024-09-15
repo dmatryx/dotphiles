@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
     name = Greg Sweetman
-    email = krypton@matryx.org.uk
+    email = github@matryx.org.uk
 
 [core]
 	editor = ~/scripts/git/editor
