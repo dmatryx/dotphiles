@@ -1,3 +1,2 @@
 #!/bin/bash
 intellij-idea-ultimate -e --wait $(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG > /dev/null 2>&1
-#subl -n -w --project ~/.sublime/git-commit.sublime-project $(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG:2  --command toggle_full_screen

@@ -18,70 +18,22 @@ DOTFILES=.dotfiles
 [files]
 # Uncomment examples below
 dotsyncrc
-#ack/ackrc
-#aptitude
 bash/dotbashrc.sh:.bashrc
 bash/bash_aliases.sh:.bash_aliases
 bash/bash_env.sh:.bash_env
 bash/bash_functions.sh:.bash_functions
 bash/bash_completions.sh:.bash_completions
+bash/fzf.sh:.fzf.bash
 #bin:bin
-#ctags/ctags
-#cmus
-#curl/curlrc
 git/git-sh-prompt:git-prompt.sh
 git/gitconfig
 #git/gitignore
 #git/gitattributes
 #git/tigrc
 #git/gitk
-#gnupg
-#grc
-#input/editrc
-#input/inputrc
-#irssi
-#mpd/mpd.conf
-#mercurial/hgrc
-#mercurial/hgignore
-#mutt
-#mutt/muttrc
-#mutt/offlineimaprc
-#mysql/my.cnf
-#ncmpcpp/config
-#ncmpcpp/error.log
-#postgresql/psqlrc
-#python/pythonrc
-#python/pylintrc
-#rpm/rpmmacros
-#ruby/irbrc
-#ruby/pryrc
-#ruby/gemrc
-#ruby/railsrc
-#ruby/rdebugrc
-#ruby/aprc
-#ruby/caprc
 scripts:scripts
 #screen/screenrc
-#shell/hushlogin
-#shell/urlview
 #ssh
-#subversion
-sublime
-#task/task
-#task/taskrc
-#tmux/tmux.conf
-#tmux/tmuxinator
-#vim/dotvim:.vim
-#vim/vimrc
-#vim/gvimrc
-#wget/wgetrc
-#zsh/fasdrc
-#zsh/dotzsh:.zsh
-#zsh/zlogin
-#zsh/zlogout
-#zsh/zprofile
-#zsh/zshenv
-#zsh/zshrc
 [endfiles]
 
 
@@ -89,7 +41,7 @@ sublime
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
 greg-thinkpad                    git=NONE
-greg-ThinkPad-X1-Carbon-Gen-10   git=NONE
+RVU-PF43XNBK   git=NONE
 #host1.example.com               git=ANY                        files=custom/dotfile    #git repo, pull from anywhere and link a custom dotfile
 #host2.example.com               git=ANY                                                #git repo, pull from anywhere
 #host3.example.com               git=ANY                                                #git repo, pull from anywhere

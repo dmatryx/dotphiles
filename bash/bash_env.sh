@@ -9,6 +9,8 @@ export GIT_PS1_SHOWUPSTREAM="verbose"
 export GIT_PS1_STATESEPARATOR=''
 export GIT_PS1_DESCRIBESTYLE="describe"
 
+export DBT_PROJECT_DIR="./dbt"
+
 __set_bash_prompt()
 {
   local exit="$?"
@@ -26,7 +28,7 @@ __set_bash_prompt()
   local KubeEKS02='\[\e[1;31m\]'
 
   # Start with the window title in pre-prompt.
-  local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "greg-ThinkPad-X1-Carbon-Gen-10" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
+  local PrePrompt='${debian_chroot:+($debian_chroot)}\[\e]0;\u$([ "${HOSTNAME}" != "RVU-PF43XNBK" ] && printf "@\h";):$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~"; printf "${p//[^[:ascii:]]/?}")    `__git_ps1`\007\]'
   local PostPrompt=""
 
   KubeNS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
@@ -62,7 +64,15 @@ __set_bash_prompt()
     PostPrompt="$Red[$exit]$None"
   fi
 
-  PostPrompt+='\n$ '
+if [[ -n "$VIRTUAL_ENV" && "$VIRTUAL_ENV" == *"env"* ]]; then
+  poetryshell="$Yellow"
+  poetryshell+="Poetry"
+  poetryshell+="$None"
+fi
+
+  PostPrompt+='\n'
+  PostPrompt+=$poetryshell
+  PostPrompt+='$ '
 
   __git_ps1 "$PrePrompt" "$PostPrompt" "(%s)"
 
@@ -76,10 +86,10 @@ export PATH=$PATH:/usr/local/go/bin ;# DOT NOT EDIT: installed by update-golang.
 export GOPATH=`go env GOPATH`
 export MARKPATH="$HOME/.marks"
 
-PATH="$HOME/scripts:$GOPATH/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/scripts:$GOPATH/bin:$PATH"
 
 # Nice manpages. Most is to less as less is to more.
 export MANPAGER='most'
 
 # Necessary for a lot of google libraries
-export GOOGLE_APPLICATION_CREDENTIALS=application_default_credentials.json
+#export GOOGLE_APPLICATION_CREDENTIALS=application_default_credentials.json

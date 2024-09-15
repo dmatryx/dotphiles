@@ -14,7 +14,7 @@ if ! shopt -oq posix; then
 fi
 
 # Completion for U and Kubectl
-eval "$(u --completion-script-bash)"
+. <(u completion bash)
 source <(kubectl completion bash)
 
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
@@ -27,3 +27,11 @@ fi
 
 # Completion for jump and unmark
 complete -F _completemarks jump unmark
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -f ~/code/other/fzf-obc/bin/fzf-obc.bash ]; then
+    . ~/code/other/fzf-obc/bin/fzf-obc.bash;
+fi
+
+. ~/.asdf/completions/asdf.bash

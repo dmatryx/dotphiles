@@ -349,8 +349,10 @@ function marks(){
 # Completion function for jump/unmark
 function _completemarks() {
   local curw=${COMP_WORDS[COMP_CWORD]}
-  local wordlist=$(find $MARKPATH -maxdepth 1 -type l,d -exec basename {} \;)
-  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+#  local wordlist=$(find $MARKPATH -maxdepth 1 -type l,d -exec basename {} \;)
+  local wordlist=$(find $MARKPATH -maxdepth 1 -type l -exec basename {} \; | fzf --preview "tree $MARKPATH/{} -C -L 1 | head -200")
+  COMPREPLY=("${wordlist[@]}")
+#  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
 
@@ -377,6 +379,15 @@ function kc(){
 # Function to try and bash into a kube pod.
 function kbash(){
   kubectl exec $1 -it -- bash
+}
+
+# Function to decode and output kube secrets
+function kdecode(){
+  for row in $(kubectl get secret $1 -o json | jq -c '.data | to_entries[]'); do
+    K=$(echo "${row}" | jq -r '.key')
+    V=$(echo "${row}" | jq -r '.value' | base64 --decode)
+    echo "${K}:${V}"
+  done
 }
 
 # Function to run some useful lein things and open the output in sublime.

@@ -23,7 +23,6 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=20000
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -64,7 +63,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$'
 fi
 unset color_prompt force_color_prompt
 
@@ -118,10 +117,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.bash_completions ]; then
-    . ~/.bash_completions
-fi
-
 # Detail the system uptime.
 uptime -p | sed -e "s/up/Up for/"
 
@@ -146,15 +141,26 @@ fi
 # Added by Krypton
 export GPG_TTY=$(tty)
 
-# AWS Localdev stuff
-export LocalDev=greg
-export RepoDir=/home/greg/code/money/website
-export LocalUser=$(id -u)
-export LocalGroup=$(id -g)
+# rbenv
+export PATH="/home/greg/.rbenv/bin:${PATH}"
+export PATH="/home/greg/.rbenv/shims:${PATH}"
+export RBENV_SHELL=bash
+source '/home/greg/.rbenv/completions/rbenv.bash'
+command rbenv rehash 2>/dev/null
+rbenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
 
-eval "$(rbenv init -)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+  case "$command" in
+  rehash|shell)
+    eval "$(rbenv "sh-$command" "$@")";;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
 
 
 ## Setting up session specific kubeconfig
@@ -162,3 +168,27 @@ kcfile=/tmp/kubeconfig-$RANDOM.json
 kubectl config view --flatten --merge --output json > $kcfile
 export KUBECONFIG=$kcfile
 trap "rm -f $kcfile" EXIT
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/greg/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/greg/tmp/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/greg/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/home/greg/tmp/google-cloud-sdk/completion.bash.inc'; fi
+
+# PYENV load path
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Load PYENV virtualenv automatically
+eval "$(pyenv virtualenv-init -)"
+
+# Load ASDF
+
+. ~/.asdf/asdf.sh
+
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
+
+if [ -f ~/.bash_completions ]; then
+    . ~/.bash_completions
+fi
