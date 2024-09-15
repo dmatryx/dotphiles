@@ -80,16 +80,11 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -101,9 +96,10 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 
 if [ -f ~/.bash_env ]; then
     . ~/.bash_env
@@ -113,55 +109,17 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+
+# Now things to do on terminal startup:
 
 # Detail the system uptime.
 uptime -p | sed -e "s/up/Up for/"
 
+# Load my SSH keys
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
-  ssh-add /home/greg/.ssh/greg.rsa
+  add_all_ssh_keys
 fi
-
-add_all_keys() {
-  for file in `ls .ssh/*.rsa`
-  do
-    ssh-add $file
-  done
-}
-
-ssh-add -l >/dev/null 2>&1
-
-if [ $? == 1 ]; then
-  add_all_keys
-fi
-
-# Added by Krypton
-export GPG_TTY=$(tty)
-
-# rbenv
-export PATH="/home/greg/.rbenv/bin:${PATH}"
-export PATH="/home/greg/.rbenv/shims:${PATH}"
-export RBENV_SHELL=bash
-source '/home/greg/.rbenv/completions/rbenv.bash'
-command rbenv rehash 2>/dev/null
-rbenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  rehash|shell)
-    eval "$(rbenv "sh-$command" "$@")";;
-  *)
-    command rbenv "$command" "$@";;
-  esac
-}
-
 
 ## Setting up session specific kubeconfig
 kcfile=/tmp/kubeconfig-$RANDOM.json
@@ -184,8 +142,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Load ASDF
-
-. ~/.asdf/asdf.sh
+if [ -f ~/.asdf/asdf.sh ]; then
+  . ~/.asdf/asdf.sh
+fi
 
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
