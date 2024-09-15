@@ -4,6 +4,8 @@ if [[ ! "$PATH" == */home/greg/.fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}/home/greg/.fzf/bin"
 fi
 
+eval "$(fzf --bash)"
+
 _fzf_comprun() {
   local command=$1
   shift
@@ -28,7 +30,6 @@ _fzf_complete_u() {
 }
 
 [ -n "$BASH" ] && complete -F _fzf_complete_u -o default -o bashdefault u
-
 
 
 # Auto-completion
