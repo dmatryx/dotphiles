@@ -1,12 +1,3 @@
-#
-# dotphiles : https://github.com/dotphiles/dotphiles
-#
-# Config for dotsync.
-#
-# Authors:
-#   Ben O'Hara <bohara@gmail.com>
-#
-
 # Location of your dotfiles in $HOME
 DOTFILES=.dotfiles
 
@@ -18,20 +9,21 @@ DOTFILES=.dotfiles
 [files]
 # Uncomment examples below
 dotsyncrc
+
 bash/dotbashrc.sh:.bashrc
 bash/bash_aliases.sh:.bash_aliases
 bash/bash_env.sh:.bash_env
 bash/bash_functions.sh:.bash_functions
 bash/bash_completions.sh:.bash_completions
 bash/fzf.sh:.fzf.bash
+
 #bin:bin
+
 git/git-sh-prompt:git-prompt.sh
 git/gitconfig
-#git/gitignore
-#git/gitattributes
-#git/tigrc
-#git/gitk
+
 scripts:scripts
+
 #screen/screenrc
 #ssh
 [endfiles]
