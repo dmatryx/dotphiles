@@ -14,11 +14,6 @@ alias ideah='(intellij-idea-ultimate ./ &) > /dev/null 2>&1'
 # Do updates and upgrades for installed packages.
 alias sapt='sudo apt-get update --fix-missing && sudo apt-get --with-new-pkgs upgrade --fix-missing'
 
-# Kubectl
-alias k='kubectl'
-alias kl='kubectl logs'
-alias lns="kubectl get namespace -l 'prometheus in (customer-platform,ldn,data-engineering)'"
-
 # Git
 alias gd='git diff'
 alias gds='git diff --staged'

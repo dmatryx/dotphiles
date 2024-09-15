@@ -13,9 +13,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Completion for U and Kubectl
+# Completion for the U tool
 . <(u completion bash)
-source <(kubectl completion bash)
 
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     . /usr/lib/git-core/git-sh-prompt
@@ -34,4 +33,5 @@ if [ -f ~/code/other/fzf-obc/bin/fzf-obc.bash ]; then
     . ~/code/other/fzf-obc/bin/fzf-obc.bash;
 fi
 
+# Load ASDF completions
 . ~/.asdf/completions/asdf.bash

@@ -121,6 +121,7 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   add_all_ssh_keys
 fi
 
+# Load bash / kube functoins
 if [ -f ~/.bash_kube_bits ]; then . ~/.bash_kube_bits; fi
 
 # The next line updates PATH for the Google Cloud SDK.

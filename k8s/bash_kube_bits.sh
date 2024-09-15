@@ -1,10 +1,25 @@
-### Moving all random kube functions and tricks into one file.
+################################################################################
+## Aliases
+################################################################################
+
+# Kubectl
+alias k='kubectl'
+alias kl='kubectl logs'
+alias lns="kubectl get namespace -l 'prometheus in (customer-platform,ldn,data-engineering)'"
+
+################################################################################
+## Session specific kubeconfig handling
+################################################################################
 
 ## Setting up session specific kubeconfig
 kcfile=/tmp/kubeconfig-$RANDOM.json
 kubectl config view --flatten --merge --output json > $kcfile
 export KUBECONFIG=$kcfile
 trap "rm -f $kcfile" EXIT
+
+################################################################################
+## Functions
+################################################################################
 
 # Function to switch kubernetes namespace.
 function n(){
@@ -39,3 +54,9 @@ function kdecode(){
     echo "${K}:${V}"
   done
 }
+
+################################################################################
+## Completion Script
+################################################################################
+
+source <(kubectl completion bash)
