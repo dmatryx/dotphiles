@@ -22,6 +22,8 @@ bash/fzf.sh:.fzf.bash
 git/git-sh-prompt:git-prompt.sh
 git/gitconfig
 
+k8s/bash_kube_bits.sh:.bash_kube_bits
+
 scripts:scripts
 
 #screen/screenrc

@@ -121,11 +121,7 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   add_all_ssh_keys
 fi
 
-## Setting up session specific kubeconfig
-kcfile=/tmp/kubeconfig-$RANDOM.json
-kubectl config view --flatten --merge --output json > $kcfile
-export KUBECONFIG=$kcfile
-trap "rm -f $kcfile" EXIT
+if [ -f ~/.bash_kube_bits ]; then . ~/.bash_kube_bits; fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/greg/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/greg/tmp/google-cloud-sdk/path.bash.inc'; fi
