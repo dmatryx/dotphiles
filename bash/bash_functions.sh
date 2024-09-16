@@ -2,10 +2,13 @@
 ## Display and utility functions go here
 ################################################################################
 add_all_ssh_keys() {
-  for file in `ls .ssh/*.rsa`
-  do
-    ssh-add $file
-  done
+  ssh-add -l >/dev/null 2>&1
+  if [ $? == 1 ]; then
+    for file in `ls .ssh/*.rsa`
+    do
+      ssh-add $file
+    done
+  fi
 }
 
 # Shorthand to sync dotfiles over, regardless of where it is run from.

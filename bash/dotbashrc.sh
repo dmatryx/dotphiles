@@ -118,8 +118,8 @@ uptime -p | sed -e "s/up/Up for/"
 # Load my SSH keys
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
-  add_all_ssh_keys
 fi
+add_all_ssh_keys
 
 # Load bash / kube functoins
 if [ -f ~/.bash_kube_bits ]; then . ~/.bash_kube_bits; fi
