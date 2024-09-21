@@ -16,16 +16,15 @@ fi
 # Completion for the U tool
 . <(u completion bash)
 
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
-    . /usr/lib/git-core/git-sh-prompt
-fi
-
 if [ -f ~/git-prompt.sh ]; then
     . ~/git-prompt.sh
 fi
 
 # Completion for jump and unmark
 complete -F _completemarks jump unmark
+
+# Load ASDF completions
+. ~/.asdf/completions/asdf.bash
 
 # Load fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -34,6 +33,3 @@ complete -F _completemarks jump unmark
 if [ -f ~/code/other/fzf-obc/bin/fzf-obc.bash ]; then
     . ~/code/other/fzf-obc/bin/fzf-obc.bash;
 fi
-
-# Load ASDF completions
-. ~/.asdf/completions/asdf.bash

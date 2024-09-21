@@ -92,4 +92,4 @@ export PATH="$HOME/.local/bin:$HOME/scripts:$GOPATH/bin:$PATH"
 export MANPAGER='most'
 
 # Necessary for a lot of google libraries
-#export GOOGLE_APPLICATION_CREDENTIALS=application_default_credentials.json
+export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/application_default_credentials.json
