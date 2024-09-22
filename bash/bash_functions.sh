@@ -359,9 +359,10 @@ function marks(){
 function _completemarks() {
   local curw=${COMP_WORDS[COMP_CWORD]}
 #  local wordlist=$(find $MARKPATH -maxdepth 1 -type l,d -exec basename {} \;)
-  local wordlist=$(find $MARKPATH -maxdepth 1 -type l -exec basename {} \; | fzf --preview "tree $MARKPATH/{} -C -L 1 | head -200")
+#  local wordlist=$(find $MARKPATH -maxdepth 1 -type l -exec basename {} \; | fzf )
+  local wordlist=$(find $MARKPATH -maxdepth 1 -type l -exec basename {} \; | fzf --preview "tree \$(readlink -f $MARKPATH/{}) -C -L 1 | head -200"  --preview-window=right,70%)
   COMPREPLY=("${wordlist[@]}")
-#  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+# COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
 

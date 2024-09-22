@@ -76,7 +76,7 @@ fi
 
   __git_ps1 "$PrePrompt" "$PostPrompt" "(%s)"
 
-#  export PS1='\[\033]0;\u@\h    ${PWD//[^[:ascii:]]/?}    `__git_ps1`\007\][\[\033[92m\]\u@\h \[\033[93m\]\W\[\033[0m\]]\[\033[96m\]`__git_ps1`\[\033[0m\]\n$ '
+  #export PS1='\[\033]0;\u@\h    ${PWD//[^[:ascii:]]/?}    `__git_ps1`\007\][\[\033[92m\]\u@\h \[\033[93m\]\W\[\033[0m\]]\[\033[96m\]`__git_ps1`\[\033[0m\]\n$ '
 }
 
 PROMPT_COMMAND="__set_bash_prompt;history -a"

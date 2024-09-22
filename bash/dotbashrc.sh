@@ -100,13 +100,12 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
 
 if [ -f ~/.bash_env ]; then
     . ~/.bash_env
-fi
-
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
 fi
 
 
@@ -142,8 +141,6 @@ eval "$(pyenv virtualenv-init -)"
 if [ -f ~/.asdf/asdf.sh ]; then
   . ~/.asdf/asdf.sh
 fi
-
-[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 if [ -f ~/.bash_completions ]; then
     . ~/.bash_completions

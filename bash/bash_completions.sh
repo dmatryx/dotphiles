@@ -26,6 +26,8 @@ complete -F _completemarks jump unmark
 # Load ASDF completions
 . ~/.asdf/completions/asdf.bash
 
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
+
 # Load fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
