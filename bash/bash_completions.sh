@@ -30,8 +30,3 @@ complete -F _completemarks jump unmark
 
 # Load fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# fzf over bash complete
-if [ -f ~/code/other/fzf-obc/bin/fzf-obc.bash ]; then
-    . ~/code/other/fzf-obc/bin/fzf-obc.bash;
-fi

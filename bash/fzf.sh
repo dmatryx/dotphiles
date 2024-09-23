@@ -46,3 +46,8 @@ _fzf_setup_completion path ag kubectl
 _fzf_setup_completion dir tree
 
 # export FZF_COMPLETION_OPTS='--border --info=inline'
+
+# fzf over bash complete
+if [ -f ~/code/other/fzf-obc/bin/fzf-obc.bash ]; then
+    . ~/code/other/fzf-obc/bin/fzf-obc.bash;
+fi
