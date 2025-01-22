@@ -129,14 +129,6 @@ if [ -f '/home/greg/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/greg/tm
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/greg/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/home/greg/tmp/google-cloud-sdk/completion.bash.inc'; fi
 
-# PYENV load path
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# Load PYENV virtualenv automatically
-eval "$(pyenv virtualenv-init -)"
-
 # Load ASDF
 if [ -f ~/.asdf/asdf.sh ]; then
   . ~/.asdf/asdf.sh

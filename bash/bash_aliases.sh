@@ -8,7 +8,7 @@ alias vi='vim'
 # Pretty print json
 alias jqp="jq '.'"
 
-# Load sublime with this current folder, in a new window.
+# Load intellij with this current folder, in a new window.
 alias ideah='(intellij-idea-ultimate ./ &) > /dev/null 2>&1'
 
 # Do updates and upgrades for installed packages.

@@ -25,6 +25,20 @@ function idea {
   ) > /dev/null 2>&1
 }
 
+function uvsh {
+  local venv_dir=${1:-.venv}
+  local activate_path="$venv_dir/bin/activate"
+
+  if [ ! -f "$activate_path" ]; then
+    echo "Error: No virtual environment detected at $venv_dir" >&2
+    return 1
+  fi
+  (
+    source "$activate_path"
+    $SHELL
+  )
+}
+
 #export -f dotsync
 
 # colourizePath: [-d n] [-f n] Pathspec

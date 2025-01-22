@@ -93,3 +93,7 @@ export MANPAGER='most'
 
 # Necessary for a lot of google libraries
 export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/application_default_credentials.json
+
+# AWS default SSO profile etc
+export AWS_PROFILE=rvu
+export AWS_REGION=eu-west-1
