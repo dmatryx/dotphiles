@@ -65,8 +65,8 @@ __set_bash_prompt()
   fi
 
 if [[ -n "$VIRTUAL_ENV" && "$VIRTUAL_ENV" == *"env"* ]]; then
-  poetryshell="$Yellow"
-  poetryshell+="Poetry"
+  poetryshell="$Cyan"
+  poetryshell+="$VIRTUAL_ENV_PROMPT"
   poetryshell+="$None"
 fi
 
